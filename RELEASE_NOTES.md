@@ -103,4 +103,4 @@ Runs entirely offline — no network, no telemetry, no account.
 
 ---
 
-<sub>Source, tests and documentation: [github.com/nainai520/kline-editor](https://github.com/nainai520/kline-editor)</sub>
+<sub>说明与下载：[github.com/nainai520/kline-editor](https://github.com/nainai520/kline-editor)</sub>
