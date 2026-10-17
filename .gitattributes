@@ -1,0 +1,8 @@
+# 统一行尾：仓库内一律 LF，工作区按平台自动转换
+* text=auto eol=lf
+
+# 二进制资源不参与行尾转换
+*.png binary
+*.ico binary
+*.jpg binary
+*.exe binary

@@ -1,0 +1,42 @@
+# ---- 构建产物 ----
+build/
+build_w*/
+dist/
+dist_old/
+*.spec.bak
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# ---- 开发期临时产物（截图脚本 / 探针 / 对比图）----
+_probe_*.py
+shot_*.py
+shot_*.png
+shotlens/ 
+*.mp4
+ui_chk_*.png
+_cmp_*.png
+strip_*.png
+vid_*.png
+_*.png
+
+# ---- 系统文件 ----
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# ---- 发布工具（本地用，不进仓库）----
+.publish/
+
+# ---- 开发期内部资料（不入公开仓库）----
+DEV_NOTES.md
+cover.html
+icon_sheet.png
+shots.py
+ui_shot*.png
+_v/
+
+# ---- 开发期截图脚本与过程图 ----
+ui_shot.py
+返回封面_*.png
