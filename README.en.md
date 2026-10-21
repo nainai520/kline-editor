@@ -10,7 +10,7 @@ No market feed, no code — drag on the canvas and a candle exists.
 Then read it through MACD, RSI and moving averages, review it across timeframes,
 import it from a screenshot, or export the whole thing as an animation.
 
-[![Release](https://img.shields.io/badge/release-v2.0-2f81f7?style=flat-square)](https://github.com/nainai520/kline-editor/releases)
+[![Release](https://img.shields.io/badge/release-v3.0.0-2f81f7?style=flat-square)](https://github.com/nainai520/kline-editor/releases)
 [![Platform](https://img.shields.io/badge/platform-Windows%2010%2F11-2f81f7?style=flat-square)](https://github.com/nainai520/kline-editor)
 [![Python](https://img.shields.io/badge/python-3.10%2B-3776ab?style=flat-square&logo=python&logoColor=white)](https://www.python.org/)
 [![Offline](https://img.shields.io/badge/data-100%25%20local-3fb950?style=flat-square)](#privacy)
@@ -43,11 +43,13 @@ It fits a few kinds of work:
 |---|---|---|
 | ✏️ | **Drag to draw** | Press the left button on empty space and drag out a whole candle; the view follows your cursor past the edge so you can draw as far or as high as you want |
 | 🎯 | **Four-way refinement** | `Shift` grabs an endpoint to adjust a wick, `Ctrl` moves the whole candle, right-drag sets high/low, `Alt` snaps to the nearest price tick |
-| 📅 | **Daily / weekly / monthly / yearly** | Daily bars are the source of truth; the other timeframes are aggregated views that update themselves |
+| 📅 | **Daily / weekly / monthly / yearly** | Daily bars are the source of truth; the other timeframes are aggregated views that update themselves; weekly/monthly/yearly charts can be cleared directly |
+| 🚦 | **Price-move limit** | The top-bar **涨跌幅** key cycles off / 10% / 20%. Dragging or typing **stops at the limit**; a Windows-style toast slides in from the right at the bottom-right: **取消涨跌幅限制** releases it and applies the original value; **保持限制** keeps the clamped price. Weekly/monthly/yearly allow *level × trading days* (5 per week) |
+| 🎮 | **Candle practice** | The second primary action on the cover opens a trading drill inside the editor: a random series reveals 40 bars, `Space`/`→` reveals the next, `↑` goes long, `↓` goes short, `Esc` closes. ¥100k starting capital, **leverage 1–100× with 5–100% position sizing**, forced liquidation on margin call; every run is scored into a local leaderboard (runs / average / best / worst) |
 | 📊 | **Indicators** | MACD (12,26,9), RSI (6,12,24), MA5/10/20, volume with its average — recomputed live |
 | 🔍 | **Analysis window** | `Ctrl+E` opens six charts (return distribution, close + MAs, volume, MACD, RSI, cumulative return) plus a four-timeframe statistical report, one click to copy |
-| 🖼️ | **Import from screenshot** | Detect candles from a chart screenshot, or `Ctrl+V` straight from the clipboard |
-| 🎬 | **Export animation** | Frame-by-frame MP4 / GIF with adjustable fps, frames per candle and resolution, cumulative return labelled on the right |
+| 🖼️ | **Import from screenshot** | Detect candles from a chart screenshot — **a visible price axis is read automatically and aligned** — or `Ctrl+V` straight from the clipboard |
+| 🎬 | **Export animation** | Frame-by-frame MP4 / GIF with adjustable fps, frames per candle and resolution, cumulative return labelled on the right; the Y axis recentres itself while playing |
 | 💬 | **Note per candle** | Multi-line note on any candle, marked with a diamond on the chart, saved in the project file and exported to CSV |
 | ↩️ | **Full undo stack** | `Ctrl+Z` / `Ctrl+Y` for everything, including screenshot imports and batch wick edits |
 | 🌗 | **Dark and light themes** | Dark by default; HiDPI aware (125% / 150% / 4K) |
@@ -93,12 +95,6 @@ It fits a few kinds of work:
 1. Get the latest build from [Releases](https://github.com/nainai520/kline-editor/releases)
 2. Unzip and run `K线手绘编辑器.exe` — single file, no installation
 3. Windows 10 / 11 x64. SmartScreen may warn on first launch: *More info → Run anyway*
-
-**About the source**
-
-> **This repository ships the compiled build only — the source is not public.**
-> If you want new indicators, different interactions or a custom build,
-> open an [issue](https://github.com/nainai520/kline-editor/issues) and describe what you need.
 
 **Requirements**: Windows 10 / 11 x64, no Python, no network.
 Exporting MP4 additionally needs `ffmpeg` on PATH; without it the app falls back to GIF.

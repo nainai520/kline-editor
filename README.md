@@ -9,7 +9,7 @@
 不用导入行情数据，不用写代码 —— 在画布上拖一笔就是一根 K 线，
 画完就能出技术指标、多周期复盘、截图识图和动画视频。
 
-[![Release](https://img.shields.io/badge/release-v2.0-2f81f7?style=flat-square)](https://github.com/nainai520/kline-editor/releases)
+[![Release](https://img.shields.io/badge/release-v3.0.0-2f81f7?style=flat-square)](https://github.com/nainai520/kline-editor/releases)
 [![Platform](https://img.shields.io/badge/platform-Windows%2010%2F11-2f81f7?style=flat-square)](https://github.com/nainai520/kline-editor)
 [![Python](https://img.shields.io/badge/python-3.10%2B-3776ab?style=flat-square&logo=python&logoColor=white)](https://www.python.org/)
 [![GUI](https://img.shields.io/badge/GUI-Tkinter%20%2B%20matplotlib-1f6feb?style=flat-square)](https://matplotlib.org/)
@@ -42,11 +42,13 @@
 |---|---|---|
 | ✏️ | **左键拖拽成线** | 空白处按住左键直接拖出一根完整 K 线，拖到边缘画面自动跟随，想画多高多远都行 |
 | 🎯 | **四段精修** | `Shift` 抓端点调影线、`Ctrl` 整根平移、右键上下拖改最高/最低、`Alt` 吸附最近刻度 |
-| 📅 | **日/周/月/年多周期** | 日线是数据本体，周月年由日线聚合而来，任意切换，聚合线自动跟着变 |
+| 📅 | **日/周/月/年多周期** | 日线是数据本体，周月年由日线聚合而来，任意切换，聚合线自动跟着变；周/月/年视图可直接清空 |
+| 🚦 | **涨跌幅限制** | 顶部「涨跌幅」键循环 关 / 10% / 20%；拖到/输入到限制价就**停住**，右下角滑入 Windows 通知式提示：点「取消涨跌幅限制」可继续、点「保持限制」停在限制价；周/月/年按「档位 × 交易日数（一周 5 天）」折算 |
+| 🎮 | **K 线练习** | 封面第二个主行动进入，复用编辑器界面：随机走势只露 40 根，`空格`/`→` 揭下一根，`↑` 做多、`↓` 做空、`Esc` 平仓；默认 10 万资金，**1~100× 杠杆 + 5~100% 仓位**，爆仓强平；每局收益写进本机排行榜（共 N 局 / 平均 / 最好 / 最差） |
 | 📊 | **技术指标** | MACD(12,26,9)、RSI(6,12,24)、MA5/10/20、成交量与均量，实时重算 |
 | 🔍 | **多周期分析窗** | `Ctrl+E` 六张图表（涨跌分布/收盘+均线/量能/MACD/RSI/累计涨跌）+ 四周期统计报告，一键复制 |
-| 🖼️ | **截图识图** | 从行情截图或期货通截图里自动识别 K 线导进来，`Ctrl+V` 直接粘剪贴板 |
-| 🎬 | **导出动画视频** | 逐根回放的 MP4 / GIF，可调帧率、每根帧数、清晰度，右侧累计涨幅标注 |
+| 🖼️ | **截图识图** | 从行情截图或期货通截图里自动识别 K 线导进来，**自带价格轴会自动对齐坐标**；`Ctrl+V` 直接粘剪贴板 |
+| 🎬 | **导出动画视频** | 逐根回放的 MP4 / GIF，可调帧率、每根帧数、清晰度，右侧累计涨幅标注；播放时纵轴跟着视野自动取景 |
 | 🖼️ | **导出图片** | 高清 PNG 单图，直接可用于文章配图 |
 | 💬 | **每根都有备注** | 任意一根 K 线可写多行备注，图上打菱形标记，存进工程文件、也导进 CSV |
 | ↩️ | **完整撤销栈** | 所有操作 `Ctrl+Z` / `Ctrl+Y`，包括识图导入、批量影线速改 |
@@ -89,16 +91,11 @@
 
 ## 快速开始
 
-### 方式一：下载 exe（推荐，无需环境）
+### 下载 exe
 
 1. 打开 [Releases](https://github.com/nainai520/kline-editor/releases) 下载最新版
 2. 解压后双击 `K线手绘编辑器.exe`，单文件、免安装
 3. Windows 10 / 11 x64；首次运行可能被 SmartScreen 拦一下，选「更多信息 → 仍要运行」
-
-### 关于源码
-
-> **本仓库只提供编译好的程序，源码不公开。**
-> 想加指标、改交互或做二次开发，欢迎到 [Issues](https://github.com/nainai520/kline-editor/issues) 提需求。
 
 **运行环境**：Windows 10 / 11 x64，无需安装 Python，无需联网。
 导出 MP4 需要系统里有 `ffmpeg`；没有时会自动降级为 GIF，其他功能不受影响。
