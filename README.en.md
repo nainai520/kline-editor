@@ -142,7 +142,6 @@ Project files (`.kln`) are plain-text JSON — readable, diffable, easy to back 
 | Charts | matplotlib (TkAgg) | `LineCollection` / `PolyCollection` batch drawing keeps large series interactive |
 | Bitmap | Pillow + numpy | The splash uses a layered window (`UpdateLayeredWindow`) for real blur and rounded shadows |
 | Video | ffmpeg pipe / Pillow | Frames are baked and piped as `yuv420p` — what you export is what you watched |
-| Packaging | PyInstaller + custom installer | Besides the single-file exe there is a setup: onedir payload, AES-256-GCM encrypted, no %TEMP% unpacking and a clean uninstall |
 
 Roughly 11k lines, developed alongside **17 assertion-based test files** covering data round-trips,
 pixel-level colour checks, export dimensions, and an end-to-end check of the packaged exe.

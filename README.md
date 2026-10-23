@@ -143,7 +143,6 @@
 | 图表 | matplotlib (TkAgg) | `LineCollection` / `PolyCollection` 批量绘制，百万级图元仍可拖动画布 |
 | 图像 | Pillow + numpy | 启动封面用分层窗口（`UpdateLayeredWindow`）实现真实毛玻璃与圆角阴影 |
 | 视频 | ffmpeg 管道 / Pillow | 按帧烘焙、直接喂 `yuv420p`，输出的就是回放看到的那一帧 |
-| 打包 | PyInstaller + 自研安装器 | 单文件 exe 之外另给安装包：onedir 载荷 + AES-256-GCM 加密，装完免 %TEMP% 解压、卸载能整目录删净 |
 
 代码规模约 1.1 万行，开发期配套 **17 组断言式测试**，
 覆盖数据往返不变量、像素级 UI 配色、导出尺寸以及打包产物的端到端校验。
