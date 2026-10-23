@@ -18,7 +18,7 @@
 
 | 文件 | 说明 |
 |---|---|
-| `KLinePainter-v3.1.0-Setup-win64.exe` | Windows 10/11 x64 安装包，62.9 MiB |
+| `KLinePainter-v3.1.0-Setup-win64.exe` | Windows 10/11 x64 安装包，72.4 MiB |
 
 > 首次运行若被 SmartScreen 拦截：点「更多信息」→「仍要运行」。
 > 旧版本（v2.0.0 / v3.0.0）的下载已下架，请使用 v3.1.0。
@@ -95,7 +95,7 @@ Runs entirely offline — no network, no telemetry, no account.
 
 | File | |
 |---|---|
-| `KLinePainter-v3.1.0-Setup-win64.exe` | Windows 10/11 x64 installer, 62.9 MiB |
+| `KLinePainter-v3.1.0-Setup-win64.exe` | Windows 10/11 x64 installer, 72.4 MiB |
 
 > If SmartScreen blocks the first launch: **More info → Run anyway**.
 > Downloads for v2.0.0 / v3.0.0 have been retired — please use v3.1.0.
