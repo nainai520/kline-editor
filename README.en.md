@@ -10,7 +10,7 @@ No market feed, no code — drag on the canvas and a candle exists.
 Then read it through MACD, RSI and moving averages, review it across timeframes,
 import it from a screenshot, or export the whole thing as an animation.
 
-[![Release](https://img.shields.io/badge/release-v3.0.0-2f81f7?style=flat-square)](https://github.com/nainai520/kline-editor/releases)
+[![Release](https://img.shields.io/badge/release-v3.1.0-2f81f7?style=flat-square)](https://github.com/nainai520/kline-editor/releases)
 [![Platform](https://img.shields.io/badge/platform-Windows%2010%2F11-2f81f7?style=flat-square)](https://github.com/nainai520/kline-editor)
 [![Python](https://img.shields.io/badge/python-3.10%2B-3776ab?style=flat-square&logo=python&logoColor=white)](https://www.python.org/)
 [![Offline](https://img.shields.io/badge/data-100%25%20local-3fb950?style=flat-square)](#privacy)
@@ -44,8 +44,11 @@ It fits a few kinds of work:
 | ✏️ | **Drag to draw** | Press the left button on empty space and drag out a whole candle; the view follows your cursor past the edge so you can draw as far or as high as you want |
 | 🎯 | **Four-way refinement** | `Shift` grabs an endpoint to adjust a wick, `Ctrl` moves the whole candle, right-drag sets high/low, `Alt` snaps to the nearest price tick |
 | 📅 | **Daily / weekly / monthly / yearly** | Daily bars are the source of truth; the other timeframes are aggregated views that update themselves; weekly/monthly/yearly charts can be cleared directly |
-| 🚦 | **Price-move limit** | The top-bar **涨跌幅** key cycles off / 10% / 20%. Dragging or typing **stops at the limit**; a Windows-style toast slides in from the right at the bottom-right: **取消涨跌幅限制** releases it and applies the original value; **保持限制** keeps the clamped price. Weekly/monthly/yearly allow *level × trading days* (5 per week) |
-| 🎮 | **Candle practice** | The second primary action on the cover opens a trading drill inside the editor: a random series reveals 40 bars, `Space`/`→` reveals the next, `↑` goes long, `↓` goes short, `Esc` closes. ¥100k starting capital, **leverage 1–100× with 5–100% position sizing**, forced liquidation on margin call; every run is scored into a local leaderboard (runs / average / best / worst) |
+| 🚦 | **Price-move limit** | The top-bar **涨跌幅** key cycles off / 10% / 20%. Dragging or typing **stops at the limit**; a Windows-style toast slides in from the right at the bottom-right: **取消涨跌幅限制** releases it and applies the original value; **保持限制** keeps the clamped price. Weekly/monthly/yearly allow *level × trading days* (5 per week); **highs and lows are clamped too**, so wicks cannot be dragged past the limit |
+| 🎮 | **Candle practice** | The second primary action on the cover opens a trading drill inside the editor: a random series reveals 40 bars, `Space`/`→` reveals the next, `↑` goes long, `↓` goes short, `Esc` closes. ¥100k starting capital, **leverage 1–1000× with 5–100% position sizing**, forced liquidation on margin call; every run is scored into a local leaderboard (runs / average / best / worst) |
+| 📐 | **Range statistics** | The button next to **识图**: click the start candle, click the end candle, get a report – change over the range, high/low with dates, amplitude, max drawdown, up/down/flat counts, longest streaks, per-candle moves, average body and wicks, total and average volume |
+| ✂️ | **Remove all wicks** | The fifth button in the wick panel collapses every wick into the body across the whole chart, as **one single undo step** |
+| 🛡️ | **Author mark** | Project files carry an author signature verified in the status bar, exported PNGs embed Author / Software metadata, and the exe file properties show the author and project URL; the menu links straight to GitHub and About |
 | 📊 | **Indicators** | MACD (12,26,9), RSI (6,12,24), MA5/10/20, volume with its average — recomputed live |
 | 🔍 | **Analysis window** | `Ctrl+E` opens six charts (return distribution, close + MAs, volume, MACD, RSI, cumulative return) plus a four-timeframe statistical report, one click to copy |
 | 🖼️ | **Import from screenshot** | Detect candles from a chart screenshot — **a visible price axis is read automatically and aligned** — or `Ctrl+V` straight from the clipboard |
@@ -90,13 +93,15 @@ It fits a few kinds of work:
 
 ## Quick start
 
-**Download the exe (no environment needed)**
+**Download the installer**
 
-1. Get the latest build from [Releases](https://github.com/nainai520/kline-editor/releases)
-2. Unzip and run `K线手绘编辑器.exe` — single file, no installation
-3. Windows 10 / 11 x64. SmartScreen may warn on first launch: *More info → Run anyway*
+1. Get `KLinePainter-v3.1.0-Setup-win64.exe` from [Releases](https://github.com/nainai520/kline-editor/releases)
+2. Run it — installs to `%LOCALAPPDATA%\Programs\K线手绘编辑器` by default (**no admin rights**, any drive you like)
+3. Desktop / Start-menu shortcuts are optional; the app uninstalls cleanly from Windows settings
 
-**Requirements**: Windows 10 / 11 x64, no Python, no network.
+> If SmartScreen blocks the first launch: **More info → Run anyway**.
+
+**Requirements**: Windows 10 / 11 x64, no Python, no network. The installer ships **no source code** and its payload is encrypted.
 Exporting MP4 additionally needs `ffmpeg` on PATH; without it the app falls back to GIF.
 
 ## Keyboard shortcuts
@@ -138,7 +143,7 @@ Project files (`.kln`) are plain-text JSON — readable, diffable, easy to back 
 | Charts | matplotlib (TkAgg) | `LineCollection` / `PolyCollection` batch drawing keeps large series interactive |
 | Bitmap | Pillow + numpy | The splash uses a layered window (`UpdateLayeredWindow`) for real blur and rounded shadows |
 | Video | ffmpeg pipe / Pillow | Frames are baked and piped as `yuv420p` — what you export is what you watched |
-| Packaging | PyInstaller | Single-file exe; splash paints first, heavy imports run on a worker thread |
+| Packaging | PyInstaller + custom installer | Besides the single-file exe there is a setup: onedir payload, AES-256-GCM encrypted, no %TEMP% unpacking and a clean uninstall |
 
 Roughly 11k lines, developed alongside **17 assertion-based test files** covering data round-trips,
 pixel-level colour checks, export dimensions, and an end-to-end check of the packaged exe.

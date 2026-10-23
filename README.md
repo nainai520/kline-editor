@@ -9,7 +9,7 @@
 不用导入行情数据，不用写代码 —— 在画布上拖一笔就是一根 K 线，
 画完就能出技术指标、多周期复盘、截图识图和动画视频。
 
-[![Release](https://img.shields.io/badge/release-v3.0.0-2f81f7?style=flat-square)](https://github.com/nainai520/kline-editor/releases)
+[![Release](https://img.shields.io/badge/release-v3.1.0-2f81f7?style=flat-square)](https://github.com/nainai520/kline-editor/releases)
 [![Platform](https://img.shields.io/badge/platform-Windows%2010%2F11-2f81f7?style=flat-square)](https://github.com/nainai520/kline-editor)
 [![Python](https://img.shields.io/badge/python-3.10%2B-3776ab?style=flat-square&logo=python&logoColor=white)](https://www.python.org/)
 [![GUI](https://img.shields.io/badge/GUI-Tkinter%20%2B%20matplotlib-1f6feb?style=flat-square)](https://matplotlib.org/)
@@ -43,8 +43,11 @@
 | ✏️ | **左键拖拽成线** | 空白处按住左键直接拖出一根完整 K 线，拖到边缘画面自动跟随，想画多高多远都行 |
 | 🎯 | **四段精修** | `Shift` 抓端点调影线、`Ctrl` 整根平移、右键上下拖改最高/最低、`Alt` 吸附最近刻度 |
 | 📅 | **日/周/月/年多周期** | 日线是数据本体，周月年由日线聚合而来，任意切换，聚合线自动跟着变；周/月/年视图可直接清空 |
-| 🚦 | **涨跌幅限制** | 顶部「涨跌幅」键循环 关 / 10% / 20%；拖到/输入到限制价就**停住**，右下角滑入 Windows 通知式提示：点「取消涨跌幅限制」可继续、点「保持限制」停在限制价；周/月/年按「档位 × 交易日数（一周 5 天）」折算 |
-| 🎮 | **K 线练习** | 封面第二个主行动进入，复用编辑器界面：随机走势只露 40 根，`空格`/`→` 揭下一根，`↑` 做多、`↓` 做空、`Esc` 平仓；默认 10 万资金，**1–100× 杠杆 + 5–100% 仓位**，爆仓强平；每局收益写进本机排行榜（共 N 局 / 平均 / 最好 / 最差） |
+| 🚦 | **涨跌幅限制** | 顶部「涨跌幅」键循环 关 / 10% / 20%；拖到/输入到限制价就**停住**，右下角滑入 Windows 通知式提示：点「取消涨跌幅限制」可继续、点「保持限制」停在限制价；周/月/年按「档位 × 交易日数（一周 5 天）」折算；**上下影线同样受限**，拖不出档位 |
+| 🎮 | **K 线练习** | 封面第二个主行动进入，复用编辑器界面：随机走势只露 40 根，`空格`/`→` 揭下一根，`↑` 做多、`↓` 做空、`Esc` 平仓；默认 10 万资金，**1–1000× 杠杆 + 5–100% 仓位**，爆仓强平；每局收益写进本机排行榜（共 N 局 / 平均 / 最好 / 最差） |
+| 📐 | **区间统计** | 「识图」旁的按钮：点起点、点终点，直接出一份区间报告 – 区间涨跌、最高最低（带日期）、振幅、最大回撤、阳阴平根数、最长连涨连跌、单根涨跌、平均实体与上下影、成交量合计与均值 |
+| ✂️ | **一键去影线** | 左侧「影线速改」第 5 个按钮：整张图的影线一次收成实体，整批只压**一个撤销点** |
+| 🛡️ | **作者标记与防伪** | 工程文件写入作者签名并在状态栏校验、导出 PNG 带 Author / Software 元数据、exe 右键属性能看到作者与项目地址；菜单里可直接跳 GitHub 与「关于作者」 |
 | 📊 | **技术指标** | MACD(12,26,9)、RSI(6,12,24)、MA5/10/20、成交量与均量，实时重算 |
 | 🔍 | **多周期分析窗** | `Ctrl+E` 六张图表（涨跌分布/收盘+均线/量能/MACD/RSI/累计涨跌）+ 四周期统计报告，一键复制 |
 | 🖼️ | **截图识图** | 从行情截图或期货通截图里自动识别 K 线导进来，**自带价格轴会自动对齐坐标**；`Ctrl+V` 直接粘剪贴板 |
@@ -91,13 +94,15 @@
 
 ## 快速开始
 
-### 下载 exe
+### 下载安装包
 
-1. 打开 [Releases](https://github.com/nainai520/kline-editor/releases) 下载最新版
-2. 解压后双击 `K线手绘编辑器.exe`，单文件、免安装
-3. Windows 10 / 11 x64；首次运行可能被 SmartScreen 拦一下，选「更多信息 → 仍要运行」
+1. 打开 [Releases](https://github.com/nainai520/kline-editor/releases) 下载 `KLinePainter-v3.1.0-Setup-win64.exe`
+2. 双击安装，默认装到 `%LOCALAPPDATA%\Programs\K线手绘编辑器`（**免管理员**，可改到其它盘）
+3. 可选桌面 / 开始菜单快捷方式，装完直接运行；控制面板里能正常卸载
 
-**运行环境**：Windows 10 / 11 x64，无需安装 Python，无需联网。
+> 首次运行若被 SmartScreen 拦一下：点「更多信息」→「仍要运行」。
+
+**运行环境**：Windows 10 / 11 x64，无需安装 Python，无需联网。安装包**不含任何源码**，载荷加密存放。
 导出 MP4 需要系统里有 `ffmpeg`；没有时会自动降级为 GIF，其他功能不受影响。
 
 ## 键盘快捷键
@@ -139,7 +144,7 @@
 | 图表 | matplotlib (TkAgg) | `LineCollection` / `PolyCollection` 批量绘制，百万级图元仍可拖动画布 |
 | 图像 | Pillow + numpy | 启动封面用分层窗口（`UpdateLayeredWindow`）实现真实毛玻璃与圆角阴影 |
 | 视频 | ffmpeg 管道 / Pillow | 按帧烘焙、直接喂 `yuv420p`，输出的就是回放看到的那一帧 |
-| 打包 | PyInstaller | 单文件 exe，封面先显示、重模块在后台线程加载，冷启动不白屏 |
+| 打包 | PyInstaller + 自研安装器 | 单文件 exe 之外另给安装包：onedir 载荷 + AES-256-GCM 加密，装完免 %TEMP% 解压、卸载能整目录删净 |
 
 代码规模约 1.1 万行，开发期配套 **17 组断言式测试**，
 覆盖数据往返不变量、像素级 UI 配色、导出尺寸以及打包产物的端到端校验。

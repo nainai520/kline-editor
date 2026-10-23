@@ -1,4 +1,4 @@
-# v3.0.0 — 2026-10-21
+# v3.1.0 — 2026-10-24
 
 **简体中文** · [English](#english)
 
@@ -9,8 +9,8 @@
 **K线手绘编辑器** —— 不用导入行情数据，在画布上亲手拖出一根根 K 线。
 画完立刻看到它在 MACD、RSI、均线和多周期聚合下是什么样子，并能导出高清图片与逐根回放的动画视频。
 
-这一版最大的变化：**它现在可以拿来练手了**。封面多了「K线练习」入口，
-在编辑器里押方向、带杠杆、算真实盈亏，一局一局练盘感。
+这一版开始**提供正式安装包**：双击 setup 就装好，免管理员、带快捷方式、能正常卸载。
+安装包里不含任何源码，载荷加密存放。
 
 完全离线运行，不联网、不传数据、不需要账号。
 
@@ -18,58 +18,65 @@
 
 | 文件 | 说明 |
 |---|---|
-| `KLinePainter-v3.0.0-win64.exe` | Windows 10/11 x64 单文件版，39.8 MiB，免安装 |
+| `KLinePainter-v3.1.0-Setup-win64.exe` | Windows 10/11 x64 安装包，62.9 MiB |
 
 > 首次运行若被 SmartScreen 拦截：点「更多信息」→「仍要运行」。
+> 旧版本（v2.0.0 / v3.0.0）的下载已下架，请使用 v3.1.0。
+
+### 安装
+
+1. 双击 `KLinePainter-v3.1.0-Setup-win64.exe`
+2. 默认装到 `%LOCALAPPDATA%\Programs\K线手绘编辑器` —— **不需要管理员权限**，也可以改到 D 盘等其它位置
+3. 勾选桌面 / 开始菜单快捷方式（可选），完成后可直接启动
+4. 想卸载：控制面板 →「程序和功能」→ 卸载，会清掉文件、快捷方式和注册项；**你的工程文件和练习记录不会被删**
 
 ### 这一版有什么
 
-**🎮 K 线练习（全新）**
+**📦 正式安装包（全新）**
 
-- 封面第二个主行动进入，界面就是编辑器本身 —— 不是另做一个玩具窗口
-- 开局随机生成一段走势，只露前 40 根：`空格` / `→` 揭下一根，走到底自动结算
-- `↑` 做多、`↓` 做空、`Esc` 平仓；成本 = 当根收盘，浮动收益按方向 × 涨跌幅算
-- **真实资金模型**：默认 10 万（可改 1 千 – 1 亿），**杠杆 1–100×**、**仓位 5–100%**
-- **爆仓判定**：浮亏吃穿保证金就强平，100 倍反向 2% 恰好亏光本金，不会穿仓变负数
-- 杠杆/仓位改完要按「确定」才生效，没按还是旧值（未确定时按钮变蓝提醒）
-- 一局根数 30–600 可改；**每局起点价、波动率、趋势完全随机**，不会每局一个模子
-- **练习记录**：每局收益写进本机排行榜（最多 200 局），显示共 N 局 / 平均 / 最好 / 最差，红涨绿跌
-- 退出练习会原样还原你原来的工程 —— 连「已修改」状态都还回去，玩一局不会弄丢你的图
+- 自研安装向导，深色界面与主程序同款，带进度条和深色标题栏
+- 装到用户目录免提权；安装前会预检目录可写性，装到 Program Files 会提前提示换目录，不会装一半才报错
+- 采用 onedir 结构：启动不用解压、不占 `%TEMP%`、卸载能把整个目录删干净
+- **安装包不含源码**（安装目录约 1256 个文件、0 个 `.py`），载荷用 AES-256-GCM 加密存放，
+  改过一个字节就会提示「安装包已损坏或被篡改」
 
-**🚦 涨跌幅限制**
+**🎮 练习：杠杆上限 100 → 1000×**
 
-- 顶部「涨跌幅」键循环 **关 / 10% / 20%**（菜单「更多 → 涨跌幅限制」同样可选）
-- 拖到或输入到限制价就**停住**，右下角滑入一张 Windows 通知式卡片：
-  「取消涨跌幅限制」放行并补应用原始值，「保持限制」停在限制价
-- 周/月/年线按 **档位 × 交易日数**（一周 5 天）折算，不是生搬日线档位
-- 面板改值、表格改值、方向键微调、鼠标拖动全部硬夹；级联派生的日线同样守限制
+- 1000 倍反向 0.1% 就打爆保证金，爆仓闸照旧在，权益不会变成负数
 
-**🔧 其它改进**
+**🚦 涨跌幅限制扩到影线**
 
-- **截图识图会读价格轴**：截图里带价格网格时自动对齐坐标，导入不再需要手对基准
-- **周/月/年视图可直接清空**：不用先切回日线
-- **播放时纵轴自动取景**：K 线多的时候不再被压成一条细线
+- 以前只夹收盘价，影线能随便拖出界；现在拖影线、右键改高低、面板填值、表格改 h/l、单根随机影线
+  五个入口全部受限，而且不会把影线夹进实体里
+
+**📐 区间统计**
+
+- 「识图」旁边的按钮：点起点、点终点，直接出一份报告 —— 区间涨跌、最高最低（带日期）、振幅、
+  最大回撤、阳阴平根数、最长连涨连跌、单根涨跌、平均实体与上下影、成交量合计与均值
+
+**✂️ 一键去影线**
+
+- 影线速改里新增第 5 个按钮：整张图的影线一次收成实体，整批只压一个撤销点
+
+**🛡️ 作者标记与防伪**
+
+- 工程文件写入作者签名，打开时状态栏校验（只提示，不拦路）
+- 导出 PNG 内嵌 Author / Software / Signature 元数据
+- exe 右键「属性 → 详细信息」能看到作者与项目地址
+- 菜单里新增「项目主页（GitHub）」与「关于作者」
 
 **🐞 修复**
 
-- 编辑周/月/年线后，随机生成的下级 K 线出现**大跳空与巨柱**：
-  贴边分摊与随机游走都加了位移上限，改收盘会传导到下一根开盘，相邻跳空设硬上限
-  （实测边界断口 7.1% → 0）
-
-### 安装与运行
-
-1. 下载上面的 exe
-2. 放到任意目录（建议单独建个文件夹），双击运行
-3. 不需要安装 Python、不需要联网
-
-**导出的 MP4** 需要系统里有 `ffmpeg`；没有时会自动降级为 GIF，功能不受影响。
+- **随机生成的起始价不生效**：周/月/年分支忽略了起始价；对话框默认值恒为 0，会冲掉手画的首根开盘；
+  而且提问顺序是「起始价 → 保留并追加？」，默认按钮是"追加"，认真填完一路回车反而落进追加分支被忽略。
+  现在先问模式，只有「替换」才问起始价，填 0 表示沿用现有第一根开盘价。
 
 ### 系统要求
 
 - Windows 10 / 11，64 位
-- 无需管理员权限
-- 工程文件（`.kln`）是纯文本 JSON，可直接备份、迁移
-- 练习记录存在本机 `~/.kline_practice_records.json`，不上传
+- 无需管理员权限、无需安装 Python、无需联网
+- 导出 MP4 需要系统里有 `ffmpeg`；没有时会自动降级为 GIF
+- 工程文件（`.kln`）是纯文本 JSON，练习记录在 `~/.kline_practice_records.json`，都不上传
 
 ### 已知限制
 
@@ -86,9 +93,8 @@ No market data import: drag on the canvas and draw each candle yourself, then re
 MACD, RSI, moving averages and multi-timeframe aggregation. Export clean PNGs or a frame-by-frame
 animation of the whole structure.
 
-The big addition in this version: **it doubles as a trading drill**. A second action on the cover
-opens a practice mode inside the editor — call the direction, set leverage, and see real P&L
-candle by candle.
+This version ships a **proper installer**: double-click the setup and you are done — no admin rights,
+shortcuts included, uninstalls cleanly. The installer contains no source code and its payload is encrypted.
 
 Runs entirely offline — no network, no telemetry, no account.
 
@@ -96,52 +102,70 @@ Runs entirely offline — no network, no telemetry, no account.
 
 | File | |
 |---|---|
-| `KLinePainter-v3.0.0-win64.exe` | Windows 10/11 x64, single file, 39.8 MiB, no installer |
+| `KLinePainter-v3.1.0-Setup-win64.exe` | Windows 10/11 x64 installer, 62.9 MiB |
 
 > If SmartScreen blocks the first launch: **More info → Run anyway**.
+> Downloads for v2.0.0 / v3.0.0 have been retired — please use v3.1.0.
+
+### Install
+
+1. Run `KLinePainter-v3.1.0-Setup-win64.exe`
+2. Defaults to `%LOCALAPPDATA%\Programs\K线手绘编辑器` — **no admin rights needed**, and you can pick another drive
+3. Desktop / Start-menu shortcuts are optional; launch right after finishing
+4. To remove it: Settings → Apps → uninstall. Files, shortcuts and registry entries are cleaned up;
+   **your project files and practice records are kept**
 
 ### What's in this release
 
-**🎮 Candle practice (new)**
+**📦 A real installer (new)**
 
-- Entered from the second primary action on the cover — and it *is* the editor, not a toy window
-- Each run generates a random series and reveals only the first 40 bars: `Space` / `→` reveals one, the run settles automatically at the end
-- `↑` goes long, `↓` goes short, `Esc` closes; cost basis is the current close, floating P&L follows direction × return
-- **Real money model**: ¥100k starting capital (editable, 1k–100M), **leverage 1–100×**, **position size 5–100%**
-- **Liquidation**: if floating loss eats the margin you are force-closed — at 100× a 2% adverse move wipes the margin exactly, equity never goes negative
-- Leverage and position size only take effect after pressing **确定** — until then the old value is used and the button turns accent-coloured
-- Run length adjustable 30–600 bars; **every run randomises start price, volatility and trend**, so no two runs look alike
-- **Scoreboard**: each run's P&L is stored locally (up to 200 runs) with runs / average / best / worst, red for gains and green for losses
-- Leaving practice restores your previous project exactly — even its "modified" flag — so a quick session never costs you your work
+- Custom dark wizard matching the app, with a progress bar and a dark title bar
+- Installs into your user folder without elevation; the target directory is checked for write access first,
+  so choosing Program Files warns you up front instead of failing halfway
+- onedir layout: no unpacking at launch, nothing left in `%TEMP%`, and the whole folder is removed on uninstall
+- **No source code inside** (about 1256 files, zero `.py`), payload stored with AES-256-GCM — flip a single
+  byte and the installer reports that the package is corrupt or tampered with
 
-**🚦 Price-move limit**
+**🎮 Practice: leverage cap 100 → 1000×**
 
-- The top-bar **涨跌幅** key cycles off / 10% / 20% (also under **More → 涨跌幅限制**)
-- Dragging or typing **stops at the limit** and a Windows-style toast slides in from the bottom-right: **取消涨跌幅限制** releases the clamp and applies the value you originally wanted, **保持限制** keeps the clamped price
-- Weekly/monthly/yearly candles are clamped by **level × trading days** (5 per week) instead of the raw daily level
-- Panel edits, table edits, arrow-key nudges and mouse drags are all clamped, and so are the daily bars derived by cascading down
+- At 1000× a 0.1% adverse move wipes the margin; the liquidation check stays in place so equity never goes negative
 
-**🔧 Also improved**
+**🚦 Price-move limit now covers wicks**
 
-- **Screenshot import reads the price axis**: when the image carries a price grid the coordinates are aligned automatically
-- **Weekly / monthly / yearly charts can be cleared directly** — no need to switch back to daily first
-- **The Y axis recentres while playing**, so a long series no longer collapses into a thin band
+- Previously only the close was clamped and wicks could be dragged past the limit. Now dragging a wick,
+  right-dragging high/low, typing in the panel, editing the h/l columns and randomising a single wick are all
+  clamped — without pushing the wick inside the body
+
+**📐 Range statistics**
+
+- The button next to **识图**: click the start candle, click the end candle, and get a report — change over
+  the range, high/low with dates, amplitude, max drawdown, up/down/flat counts, longest streaks, per-candle
+  moves, average body and wicks, total and average volume
+
+**✂️ Remove all wicks**
+
+- A fifth button in the wick panel collapses every wick into its body across the chart, as one single undo step
+
+**🛡️ Author mark**
+
+- Project files embed an author signature checked in the status bar (informational only, never blocks opening)
+- Exported PNGs carry Author / Software / Signature metadata
+- The exe's file properties show the author and project URL
+- The menu links straight to GitHub and About
 
 **🐞 Fixed**
 
-- After editing weekly/monthly/yearly candles, the randomly generated child bars showed **huge gaps and oversized bodies**: displacement caps were added to edge distribution and the random walk, closing price now propagates into the next open, and adjacent gaps are hard-capped (measured boundary gap 7.1% → 0)
-
-### Install and run
-
-1. Download the exe above
-2. Put it in any folder and double-click — no Python, no network needed
-3. Exporting MP4 additionally needs `ffmpeg` on PATH; without it the app falls back to GIF
+- **Random generation ignored the starting price**: the weekly/monthly/yearly branch dropped it entirely, the
+  dialog defaulted to 0 and overwrote a hand-drawn first open, and the question order was
+  *starting price → keep and append?* with "append" as the default button — so filling in a price and pressing
+  Enter landed in the append branch where it is ignored. The mode is now asked first, the starting price is
+  only asked for "replace", and 0 means "reuse the current first open".
 
 ### Requirements
 
-- Windows 10 / 11, 64-bit, no admin rights needed
-- Project files (`.kln`) are plain-text JSON — easy to back up and move
-- Practice records live in `~/.kline_practice_records.json` on your machine and are never uploaded
+- Windows 10 / 11, 64-bit; no admin rights, no Python, no network
+- Exporting MP4 needs `ffmpeg` on PATH; without it the app falls back to GIF
+- Project files (`.kln`) are plain-text JSON; practice records live in `~/.kline_practice_records.json` — neither is uploaded
 
 ### Known limitations
 
