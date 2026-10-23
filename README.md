@@ -69,6 +69,14 @@
 
 <div align="center">
 
+<img src="docs/screenshots/06-practice.png" width="880" alt="K 线练习">
+
+<sub>K 线练习 · 封面第二个入口进来，随机走势只露前 40 根，<code>空格</code>/<code>→</code> 揭下一根，做多做空带杠杆，每局收益记进本机排行榜</sub>
+
+</div>
+
+<div align="center">
+
 <img src="docs/screenshots/03-draw.png" width="760" alt="拖拽绘制的五步演示">
 
 <sub>画一根的完整过程 · 空白处按下立刻落下起点，往上拖价格一路跟着涨，视野贴着光标走 —— 从 100.09 画到 106.82</sub>

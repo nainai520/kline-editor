@@ -68,6 +68,14 @@ It fits a few kinds of work:
 
 <div align="center">
 
+<img src="docs/screenshots/06-practice.png" width="880" alt="Candle practice">
+
+<sub>Candle practice · the second action on the cover: a random series shows only the first 40 bars, <code>Space</code>/<code>→</code> reveals the next, long/short with leverage, every run scored into a local leaderboard</sub>
+
+</div>
+
+<div align="center">
+
 <img src="docs/screenshots/03-draw.png" width="760" alt="Drawing a candle in five steps">
 
 <sub>Drawing one candle · press on empty space to plant the open, drag up and the price follows the cursor all the way from 100.09 to 106.82</sub>
