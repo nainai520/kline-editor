@@ -58,13 +58,6 @@
 
 - 影线速改里新增第 5 个按钮：整张图的影线一次收成实体，整批只压一个撤销点
 
-**🛡️ 作者标记与防伪**
-
-- 工程文件写入作者签名，打开时状态栏校验（只提示，不拦路）
-- 导出 PNG 内嵌 Author / Software / Signature 元数据
-- exe 右键「属性 → 详细信息」能看到作者与项目地址
-- 菜单里新增「项目主页（GitHub）」与「关于作者」
-
 **🐞 修复**
 
 - **随机生成的起始价不生效**：周/月/年分支忽略了起始价；对话框默认值恒为 0，会冲掉手画的首根开盘；
@@ -145,13 +138,6 @@ Runs entirely offline — no network, no telemetry, no account.
 **✂️ Remove all wicks**
 
 - A fifth button in the wick panel collapses every wick into its body across the chart, as one single undo step
-
-**🛡️ Author mark**
-
-- Project files embed an author signature checked in the status bar (informational only, never blocks opening)
-- Exported PNGs carry Author / Software / Signature metadata
-- The exe's file properties show the author and project URL
-- The menu links straight to GitHub and About
 
 **🐞 Fixed**
 
