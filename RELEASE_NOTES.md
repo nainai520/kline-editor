@@ -10,7 +10,6 @@
 画完立刻看到它在 MACD、RSI、均线和多周期聚合下是什么样子，并能导出高清图片与逐根回放的动画视频。
 
 这一版开始**提供正式安装包**：双击 setup 就装好，免管理员、带快捷方式、能正常卸载。
-安装包里不含任何源码，载荷加密存放。
 
 完全离线运行，不联网、不传数据、不需要账号。
 
@@ -37,8 +36,6 @@
 - 自研安装向导，深色界面与主程序同款，带进度条和深色标题栏
 - 装到用户目录免提权；安装前会预检目录可写性，装到 Program Files 会提前提示换目录，不会装一半才报错
 - 采用 onedir 结构：启动不用解压、不占 `%TEMP%`、卸载能把整个目录删干净
-- **安装包不含源码**（安装目录约 1256 个文件、0 个 `.py`），载荷用 AES-256-GCM 加密存放，
-  改过一个字节就会提示「安装包已损坏或被篡改」
 
 **🎮 练习：杠杆上限 100 → 1000×**
 
@@ -87,7 +84,7 @@ MACD, RSI, moving averages and multi-timeframe aggregation. Export clean PNGs or
 animation of the whole structure.
 
 This version ships a **proper installer**: double-click the setup and you are done — no admin rights,
-shortcuts included, uninstalls cleanly. The installer contains no source code and its payload is encrypted.
+shortcuts included, uninstalls cleanly.
 
 Runs entirely offline — no network, no telemetry, no account.
 
@@ -116,8 +113,6 @@ Runs entirely offline — no network, no telemetry, no account.
 - Installs into your user folder without elevation; the target directory is checked for write access first,
   so choosing Program Files warns you up front instead of failing halfway
 - onedir layout: no unpacking at launch, nothing left in `%TEMP%`, and the whole folder is removed on uninstall
-- **No source code inside** (about 1256 files, zero `.py`), payload stored with AES-256-GCM — flip a single
-  byte and the installer reports that the package is corrupt or tampered with
 
 **🎮 Practice: leverage cap 100 → 1000×**
 

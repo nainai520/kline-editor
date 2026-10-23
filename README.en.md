@@ -100,7 +100,7 @@ It fits a few kinds of work:
 
 > If SmartScreen blocks the first launch: **More info → Run anyway**.
 
-**Requirements**: Windows 10 / 11 x64, no Python, no network. The installer ships **no source code** and its payload is encrypted.
+**Requirements**: Windows 10 / 11 x64, no Python, no network.
 Exporting MP4 additionally needs `ffmpeg` on PATH; without it the app falls back to GIF.
 
 ## Keyboard shortcuts
